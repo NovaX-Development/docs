@@ -149,7 +149,7 @@
         }
       }
     },
-    "/orders/{orderId}/cancel": {
+    "/orders/:orderId/cancel": {
       "put": {
         "summary": "Cancels an order by Id.",
         "tags": [
@@ -224,7 +224,7 @@
         }
       }
     },
-    "/orders/{orderId}/refund": {
+    "/orders/:orderId/refund": {
       "post": {
         "summary": "Refunds an order by Id.",
         "tags": [
@@ -297,6 +297,160 @@
         }
       }
     },
+    "/orders/:orderId/refund/crypto/otp": {
+      "post": {
+        "summary": "Send a refund OTP to the tenant admin's account.",
+        "tags": [
+          "Orders"
+        ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The unique identifier of the order for which the refund is to be processed."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order Refund OTP has been sent successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "A message indicating the result of the operation."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body."
+          },
+          "401": {
+            "description": "Unauthorized access."
+          },
+          "404": {
+            "description": "Order not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/orders/:orderId/refund/crypto": {
+      "post": {
+        "summary": "Process a cryptocurrency refund for an order.",
+        "tags": [
+          "Orders"
+        ],
+        "servers": [
+          {
+            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "orderId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The unique identifier of the order for which the refund is to be processed."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CryptoRefundRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully initiated the refund request.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "description": "A message indicating the result of the operation."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request body."
+          },
+          "401": {
+            "description": "Unauthorized access."
+          },
+          "404": {
+            "description": "Order not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
     "/tenant": {
       "post": {
         "summary": "Create a Tenant.",
@@ -305,7 +459,7 @@
         ],
         "servers": [
           {
-            "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://tenants-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "requestBody": {
@@ -346,7 +500,7 @@
         ],
         "servers": [
           {
-            "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://tenants-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -422,7 +576,7 @@
         ],
         "servers": [
           {
-            "url": "https://tenants-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://tenants-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -654,9 +808,151 @@
         }
       }
     },
+    "/transactions/staking/payout": {
+      "post": {
+        "summary": "Create a staking payout transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/StakingPayoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Staking Payout request successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Unique Id with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
+    "/transactions/staking/payout/revoke": {
+      "post": {
+        "summary": "Revoke a staking payout transaction.",
+        "tags": [
+          "Transactions"
+        ],
+        "servers": [
+          {
+            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevokeStakingPayoutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Revoked Staking Transaction Successfully.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "transactionId": {
+                      "type": "string",
+                      "description": "Unique Id for the transaction."
+                    },
+                    "thirdPartyId": {
+                      "type": "string",
+                      "description": "Unique Id of the third party involved in the transaction."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Unique Id with the same third party Id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
+    },
     "/user": {
       "get": {
-        "summary": "Fetch the user by id.",
+        "summary": "Fetch the user by userId, thirdPartyUserId or email.",
         "tags": [
           "Users"
         ],
@@ -672,8 +968,26 @@
             "schema": {
               "type": "string"
             },
-            "required": true,
-            "description": "The user id."
+            "required": false,
+            "description": "The NovaX user id."
+          },
+          {
+            "in": "query",
+            "name": "thirdPartyUserId",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "The Tenant user id."
+          },
+          {
+            "in": "query",
+            "name": "email",
+            "schema": {
+              "type": "string"
+            },
+            "required": false,
+            "description": "The Tenant user email address."
           },
           {
             "in": "header",
@@ -696,7 +1010,7 @@
         ],
         "responses": {
           "200": {
-            "description": "The user response by id.",
+            "description": "The User Information.",
             "content": {
               "application/json": {
                 "schema": {
@@ -742,7 +1056,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/User"
+                "$ref": "#/components/schemas/UserCreateRequest"
               }
             }
           }
@@ -753,13 +1067,97 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserCreate"
+                  "$ref": "#/components/schemas/UserCreateResponse"
                 }
               }
             }
           },
           "409": {
             "description": "User with the same third party user id already exists."
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      },
+      "put": {
+        "summary": "Update user by userId with thirdPartyUserId.",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "userId",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The NovaX user id."
+          },
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "thirdPartyUserId": {
+                    "type": "string",
+                    "description": "The Tenant user id."
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully updated.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "User successfully updated."
+                    },
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found."
           },
           "500": {
             "description": "Internal error."
@@ -904,6 +1302,67 @@
   },
   "components": {
     "schemas": {
+      "OrderCustomerInformation": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string",
+            "description": "First name of the customer."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the customer."
+          },
+          "dob": {
+            "type": "object",
+            "properties": {
+              "year": {
+                "type": "number",
+                "description": "Year of birth."
+              },
+              "month": {
+                "type": "number",
+                "description": "Month of birth."
+              },
+              "day": {
+                "type": "number",
+                "description": "Day of birth."
+              }
+            },
+            "description": "Date of birth of the customer."
+          },
+          "address": {
+            "type": "object",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Country of the customer's address."
+              },
+              "line1": {
+                "type": "string",
+                "description": "Address line 1."
+              },
+              "line2": {
+                "type": "string",
+                "description": "Address line 2 (optional)."
+              },
+              "city": {
+                "type": "string",
+                "description": "City of the customer's address."
+              },
+              "state": {
+                "type": "string",
+                "description": "State of the customer's address."
+              },
+              "postalCode": {
+                "type": "string",
+                "description": "Postal code of the customer's address."
+              }
+            },
+            "description": "Address of the customer."
+          }
+        }
+      },
       "OrderCreate": {
         "type": "object",
         "properties": {
@@ -938,6 +1397,10 @@
           "returnUrl": {
             "type": "string",
             "description": "URL to redirect to after order is completed."
+          },
+          "customerInformation": {
+            "$ref": "#/components/schemas/OrderCustomerInformation",
+            "description": "Optional customer information for the order."
           }
         },
         "required": [
@@ -1070,15 +1533,47 @@
             "type": "string",
             "description": "The NovaX order id of the order."
           },
-          "state": {
-            "type": "string",
-            "description": "Order state after cancellation."
-          },
           "status": {
-            "type": "string",
-            "description": "Order status after cancellation."
+            "$ref": "#/components/schemas/OrderStatus",
+            "description": "The status of the order."
           }
         }
+      },
+      "CryptoRefundRequest": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string",
+            "description": "Crypto address to which the refund will be sent."
+          },
+          "network": {
+            "type": "string",
+            "description": "Blockchain network used for the refund. e.g. 'BSC', 'MATIC', 'TRON'."
+          },
+          "token": {
+            "type": "string",
+            "description": "Type of cryptocurrency token to be refunded. e.g. 'USDT'."
+          },
+          "thirdPartyId": {
+            "type": "string",
+            "description": "An identifier for the third-party service, if applicable."
+          },
+          "otp": {
+            "type": "string",
+            "description": "One-time password for transaction verification."
+          },
+          "notifyUrl": {
+            "type": "string",
+            "description": "URL to notify upon the final status of the refund process."
+          }
+        },
+        "required": [
+          "address",
+          "network",
+          "token",
+          "otp",
+          "notifyUrl"
+        ]
       },
       "Tenant": {
         "type": "object",
@@ -1121,11 +1616,6 @@
       },
       "PayoutRequest": {
         "type": "object",
-        "required": [
-          "userId",
-          "amount",
-          "thirdPartyId"
-        ],
         "properties": {
           "thirdPartyId": {
             "type": "string",
@@ -1138,6 +1628,43 @@
           "amount": {
             "type": "number",
             "description": "Amount to credit."
+          },
+          "walletType": {
+            "type": "string",
+            "description": "Wallet to credit. e.g. \"main\", \"ton\"."
+          }
+        }
+      },
+      "StakingPayoutRequest": {
+        "type": "object",
+        "properties": {
+          "thirdPartyId": {
+            "type": "string",
+            "description": "Third party unique transaction id."
+          },
+          "userId": {
+            "type": "string",
+            "description": "NovaX user id."
+          },
+          "usdAmount": {
+            "type": "number",
+            "description": "USD amount to stake."
+          },
+          "asset": {
+            "type": "string",
+            "enum": [
+              "KRU"
+            ],
+            "description": "Type of staking - Supported KRU"
+          }
+        }
+      },
+      "RevokeStakingPayoutRequest": {
+        "type": "object",
+        "properties": {
+          "transactionId": {
+            "type": "string",
+            "description": "Transaction Id for the staking request."
           }
         }
       },
@@ -1153,6 +1680,10 @@
           "dateOfBirth"
         ],
         "properties": {
+          "userId": {
+            "type": "string",
+            "description": "NovaX user id of the user. This is the unique identifier of the user in the NovaX system."
+          },
           "thirdPartyUserId": {
             "type": "string",
             "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
@@ -1206,16 +1737,55 @@
           }
         }
       },
-      "UserCreate": {
+      "UserCreateRequest": {
+        "type": "object",
+        "properties": {
+          "thirdPartyUserId": {
+            "type": "string",
+            "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
+          },
+          "firstName": {
+            "type": "string",
+            "description": "First name of the user."
+          },
+          "lastName": {
+            "type": "string",
+            "description": "Last name of the user."
+          },
+          "languageCode": {
+            "type": "string",
+            "description": "Language code of the user. e.g. en, fr, es etc."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Email of the user."
+          },
+          "country": {
+            "type": "string",
+            "description": "Country of the user. e.g. EU, NG, US etc."
+          },
+          "dateOfBirth": {
+            "type": "string",
+            "format": "date",
+            "description": "Date of birth of the user."
+          },
+          "phoneNumber": {
+            "type": "string",
+            "description": "Phone number of the user. e.g. +2348123456789"
+          }
+        }
+      },
+      "UserCreateResponse": {
         "type": "object",
         "properties": {
           "userId": {
             "type": "string",
-            "description": "The newly created users Id."
+            "description": "NovaX user id of the user. This is the unique identifier of the user in the NovaX system."
           },
           "thirdPartyUserId": {
             "type": "string",
-            "description": "Third party ID of the user."
+            "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
           }
         }
       }
