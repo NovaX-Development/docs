@@ -14,7 +14,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -85,7 +85,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -157,7 +157,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -232,7 +232,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -305,7 +305,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -377,7 +377,7 @@
         ],
         "servers": [
           {
-            "url": "https://orders-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://orders-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -651,7 +651,7 @@
         ],
         "servers": [
           {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://transactions-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -745,7 +745,7 @@
         ],
         "servers": [
           {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://transactions-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -816,7 +816,7 @@
         ],
         "servers": [
           {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://transactions-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -887,7 +887,7 @@
         ],
         "servers": [
           {
-            "url": "https://transactions-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://transactions-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -958,7 +958,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -1028,7 +1028,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -1087,7 +1087,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -1173,7 +1173,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
@@ -1227,7 +1227,7 @@
         ],
         "servers": [
           {
-            "url": "https://users-v1-api-rdqehkur6a-ey.a.run.app"
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
           }
         ],
         "parameters": [
