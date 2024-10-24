@@ -1298,6 +1298,64 @@
           }
         }
       }
+    },
+    "/user/card-web-portal": {
+      "post": {
+        "summary": "Create a Card Web Portal Session for a User.",
+        "tags": [
+          "Users"
+        ],
+        "servers": [
+          {
+            "url": "https://users-v1-api-t3mipd377q-ey.a.run.app"
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "x-api-key",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your unique API Key."
+          },
+          {
+            "in": "header",
+            "name": "x-api-hash",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "Your API Hash."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCardWebPortalRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User successfully created.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserCardWebPortalResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal error."
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1786,6 +1844,40 @@
           "thirdPartyUserId": {
             "type": "string",
             "description": "Third party user id of the user. This is the unique identifier of the user in the third party system."
+          }
+        }
+      },
+      "UserCardWebPortalRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "NovaX user email."
+          },
+          "userId": {
+            "type": "string",
+            "description": "NovaX user id."
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Your system reference id to identify this request."
+          }
+        }
+      },
+      "UserCardWebPortalResponse": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "The URL to the card web portal."
+          },
+          "eventId": {
+            "type": "string",
+            "description": "The event id of the card web portal session."
+          },
+          "referenceId": {
+            "type": "string",
+            "description": "Your system reference id to identify this request."
           }
         }
       }
