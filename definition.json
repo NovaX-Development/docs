@@ -1858,9 +1858,9 @@
             "type": "string",
             "description": "NovaX user id."
           },
-          "referenceId": {
+          "thirdPartySessionId": {
             "type": "string",
-            "description": "Your system reference id to identify this request."
+            "description": "Your system session id to identify this request."
           }
         }
       },
@@ -1871,13 +1871,13 @@
             "type": "string",
             "description": "The URL to the card web portal."
           },
-          "eventId": {
+          "sessionId": {
             "type": "string",
-            "description": "The event id of the card web portal session."
+            "description": "The session id to identify this request."
           },
-          "referenceId": {
+          "thirdPartySessionId": {
             "type": "string",
-            "description": "Your system reference id to identify this request."
+            "description": "Your system session id to identify this request."
           }
         }
       }
